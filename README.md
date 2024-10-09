@@ -6,8 +6,11 @@ Overview
 In this project, you will create a simple authentication and access control system using Python. The goal is to implement mechanisms that manage user authentication and file access, ensuring that only authorized users can access specific resources. Additionally, you must specify which secure design principles (from Saltzer and Schroeder's principles, OWASP, and other secure design resources) you employed for each mechanism in your program.
 
 Objective
+
 •	Design and implement a Python-based system that includes user account creation, authentication, secure password storage (with hashing), and access control mechanisms.
+
 •	For each major component of your system, document and explain which secure design principles you applied and why.
+
 •	You will need to refactor your crypto_project.py file into a new file CryptoProject.py that creates a CryptoProject as a class.  You will import this into your new program and use its methods to accomplish the cryptographic functions of the new program.
 
 Requirements
