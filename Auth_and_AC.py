@@ -24,8 +24,12 @@ class Authentication():
         try:
             with open(USER_FILE, 'r') as file:
                 return json.load(file)
-        except FileNotFoundError:
-            return {}
+        except FileNotFoundError:  # https://chatgpt.com/share/6717402c-aff4-8007-bfa8-c9131493ce8b
+            default_data = []
+            # ik it would be better to do the same way as acl, but I wanted to append to a list
+            with open(USER_FILE, 'w') as file:
+                json.dump(default_data, file, indent=4)
+            return default_data
 
     def save_users(self, users):
         # TODO: Save users to persistent storage.
@@ -41,9 +45,10 @@ class Authentication():
         password = input("Create a password: ")
         # TODO: Check if username already exists
 
-        for user in users:
-            if username == user["firstName"]:
-                return (print("Username already exists!"))
+        if users != None:
+            for user in users:
+                if username == user["firstName"]:
+                    return (print("Username already exists!"))
 
         # TODO: Store password securely
 
@@ -176,6 +181,12 @@ def main():
 
     users = auth.load_users()
     acl = ac.load_acl()
+
+    # folders for organization
+    ac.create_folder('./data')
+    ac.create_folder('./files')
+    ac.create_folder('./keys/private')
+    ac.create_folder('./keys/public')
 
     while True:
         print("\n--- Authentication & Access Control ---")

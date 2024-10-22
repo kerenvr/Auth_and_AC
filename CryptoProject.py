@@ -147,8 +147,37 @@ class CryptoProject:
         return f"{salt}|{iv}|{ciphertext}"
 
     def aes_decrypt(self, ciphertext, key):
-        # AES decryption code here
-        return
+        # Split the input string into salt, iv, and ciphertext
+        salt_hex, iv_hex, ciphertext_hex = ciphertext_hex.split('|')
+
+        # Convert from hex to bytes
+        salt = bytes.fromhex(salt_hex)
+        iv = bytes.fromhex(iv_hex)
+        ciphertext = bytes.fromhex(ciphertext_hex)
+
+        # Derive the same key using the provided salt
+        kdf = PBKDF2HMAC(
+            algorithm=hashes.SHA256(),
+            length=32,
+            salt=salt,
+            iterations=100000,
+            backend=default_backend()
+        )
+        derived_key = kdf.derive(key.encode())
+
+        # Create the cipher object for decryption
+        cipher = Cipher(algorithms.AES(derived_key),
+                        modes.CBC(iv), backend=default_backend())
+        decryptor = cipher.decryptor()
+
+        # Decrypt the ciphertext
+        padded_data = decryptor.update(ciphertext) + decryptor.finalize()
+
+        # Unpad the data
+        unpadder = padding.PKCS7(algorithms.AES.block_size).unpadder()
+        plaintext = unpadder.update(padded_data) + unpadder.finalize()
+
+        return plaintext.decode()
 
     def rsa_encrypt(self, plaintext, public_key_path):
         # RSA encryption code here

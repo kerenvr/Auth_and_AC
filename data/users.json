@@ -1,27 +1,5 @@
 [
     {
-        "firstName": "Cesia",
-        "password": "c206f9a7fa68486500b35f796f706d22dd1c008a153df8648b58d12427837c71",
-        "privateKey": "keren_private.pem",
-        "publicKey": "keren_public.pem"
-    },
-    {
-        "firstName": "Keren",
-        "password": "db9adf1bc4b60fb192dc2fbfddbbefd4551f72be569af8cd2a5152b95f6b0c8e"
-    },
-    {
-        "firstName": "kaylie",
-        "password": "f3ba7b1cf6e41eef5f570326bceb2df12cb36b6f026cde588f3dd714e43cc45f"
-    },
-    {
-        "firstName": "To",
-        "password": "aa5a35121bc3c5e19d70203cba7499126522f078a0d6841e95253626ed92aca2"
-    },
-    {
-        "firstName": "ke",
-        "password": "0ffe1abd1a08215353c233d6e009613e95eec4253832a761af28ff37ac5a150c"
-    },
-    {
         "firstName": "bmo",
         "password": "e0e2087b3efad83c23c899efb0059a16d9ee9d4ef51349c6066548b8d01f1ab8"
     }
